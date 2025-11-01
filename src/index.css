@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    --background: 220 15% 8%;
-    --foreground: 210 20% 98%;
-    --card: 220 15% 10%;
+    --background: 300 15% 90%; /* White background */
+    --foreground: 310 80% 20%; 
+    --card: 330 70% 85%; /* Pink card */
     --card-foreground: 210 20% 98%;
     --popover: 220 15% 10%;
     --popover-foreground: 210 20% 98%;
-    --primary: 189 97% 55%;
+    --primary: 330 75% 60%; 
     --primary-foreground: 220 15% 8%;
     --secondary: 220 15% 16%;
     --secondary-foreground: 210 20% 98%;
     --muted: 220 15% 16%;
-    --muted-foreground: 210 10% 60%;
-    --accent: 189 97% 55%;
+    --muted-foreground: 310 90% 10%;
+    --accent: 280 75% 60%; 
     --accent-foreground: 220 15% 8%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 20% 98%;
-    --border: 220 15% 20%;
+    --border: 100 10% 80%;
     --input: 220 15% 20%;
-    --ring: 189 97% 55%;
+    --ring: 280 75% 60%; 
     --radius: 0.5rem;
     
-    --gradient-primary: linear-gradient(135deg, hsl(189, 97%, 55%), hsl(189, 97%, 70%));
-    --gradient-dark: linear-gradient(180deg, hsl(220, 15%, 10%), hsl(220, 15%, 8%));
-    --shadow-glow: 0 0 40px hsl(189 97% 55% / 0.3);
+    --gradient-primary: linear-gradient(135deg, hsl(280, 75%, 60%), hsl(290, 80%, 70%)); 
+    --gradient-dark: linear-gradient(180deg, hsl(225, 13%, 88%), hsl(220, 55%, 75%));
+    --shadow-glow: 0 0 40px hsl(280 75% 60% / 0.3); 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
-    --chart-1: 189 97% 55%;
+    --chart-1: 280 75% 60%;
     --chart-2: 280 75% 60%;
     --chart-3: 45 93% 58%;
     --chart-4: 140 75% 55%;
@@ -40,12 +40,12 @@
     
     --sidebar-background: 220 15% 10%;
     --sidebar-foreground: 210 20% 98%;
-    --sidebar-primary: 189 97% 55%;
+    --sidebar-primary: 280 75% 60%; 
     --sidebar-primary-foreground: 220 15% 8%;
     --sidebar-accent: 220 15% 16%;
     --sidebar-accent-foreground: 210 20% 98%;
     --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 189 97% 55%;
+    --sidebar-ring: 280 75% 60%; 
   }
 }
 
@@ -76,7 +76,7 @@
   .gradient-text {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: white;
     background-clip: text;
   }
 }

@@ -93,6 +93,11 @@ const RequireRole = ({ children, allow }: { children: React.ReactNode; allow: Ar
     );
   }
 
+  // Admin can access everything, bypass role restrictions
+  if (role === "admin") {
+    return <>{children}</>;
+  }
+
   if (!role || !allow.includes(role)) {
     return <Navigate to="/dashboard" replace />;
   }

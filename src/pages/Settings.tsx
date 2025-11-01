@@ -41,38 +41,62 @@ const Settings = () => {
 
   const loadSettings = async () => {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      // Check localStorage first (for consistency with RequireRole)
+      const localRole = localStorage.getItem("selectedRole");
+      if (localRole) {
+        setCurrentUserRole(localRole);
+        // Still load users if admin
+        if (localRole === "admin") {
+          await loadUsersList();
+        }
+        setLoading(false);
+        return;
+      }
 
-      // Get current user role
-      const { data: roleData } = await supabase
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        setLoading(false);
+        return;
+      }
+
+      // Get current user role from database
+      const { data: roleData, error } = await supabase
         .from("user_roles")
         .select("role")
         .eq("user_id", user.id)
         .single();
 
-      setCurrentUserRole(roleData?.role || "viewer");
+      const userRole = error ? "viewer" : (roleData?.role || "viewer");
+      setCurrentUserRole(userRole);
 
       // Only admins can view all users
-      if (roleData?.role === "admin") {
-        const { data: profiles } = await supabase
-          .from("profiles")
-          .select("*, user_roles(role)");
-
-        const usersWithRoles = profiles?.map(profile => ({
-          id: profile.id,
-          email: profile.email,
-          full_name: profile.full_name,
-          role: (profile.user_roles as any)?.[0]?.role || "viewer"
-        })) || [];
-
-        setUsers(usersWithRoles);
+      if (userRole === "admin") {
+        await loadUsersList();
       }
     } catch (error) {
       console.error("Error loading settings:", error);
       toast.error("Failed to load settings");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadUsersList = async () => {
+    try {
+      const { data: profiles } = await supabase
+        .from("profiles")
+        .select("*, user_roles(role)");
+
+      const usersWithRoles = profiles?.map(profile => ({
+        id: profile.id,
+        email: profile.email,
+        full_name: profile.full_name,
+        role: (profile.user_roles as any)?.[0]?.role || "viewer"
+      })) || [];
+
+      setUsers(usersWithRoles);
+    } catch (error) {
+      console.error("Error loading users:", error);
     }
   };
 
@@ -98,6 +122,14 @@ const Settings = () => {
       toast.error(error.message || "Failed to update user role");
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-muted-foreground">Loading...</div>
+      </div>
+    );
+  }
 
   if (currentUserRole !== "admin") {
     return (

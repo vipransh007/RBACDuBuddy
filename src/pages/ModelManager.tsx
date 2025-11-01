@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
-import { ArrowLeft, Edit, Trash2, Database, Eye } from "lucide-react";
+import { ArrowLeft, Edit, Trash2, Database, Shield } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -103,9 +103,9 @@ const ModelManager = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-card">
+      <header className="border-b border-border bg-card/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
-          <Button variant="ghost" onClick={() => navigate("/dashboard")} className="gap-2">
+          <Button variant="ghost" onClick={() => navigate("/dashboard")} className="gap-2 smooth-transition hover:bg-primary/10">
             <ArrowLeft className="h-4 w-4" />
             Back to Dashboard
           </Button>
@@ -128,7 +128,7 @@ const ModelManager = () => {
             )}
           </div>
 
-          <Card className="border-border bg-card">
+          <Card className="border-border bg-card smooth-transition">
             <CardHeader>
               <CardTitle>All Models</CardTitle>
               <CardDescription>
@@ -162,27 +162,29 @@ const ModelManager = () => {
                   </TableHeader>
                   <TableBody>
                     {models.map((model) => (
-                      <TableRow key={model.id}>
+                      <TableRow key={model.id} className="smooth-transition hover:bg-card/50">
                         <TableCell className="font-medium">{model.name}</TableCell>
                         <TableCell className="text-muted-foreground">
                           {model.description || "No description"}
                         </TableCell>
                         <TableCell>
-                          <Badge variant="outline">
+                          <Badge variant="outline" className="smooth-transition">
                             {new Date(model.created_at).toLocaleDateString()}
                           </Badge>
                         </TableCell>
                         <TableCell className="text-right">
                           <div className="flex justify-end gap-2">
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              onClick={() => navigate(`/admin/${model.id}`)}
-                              className="gap-1"
-                            >
-                              <Eye className="h-4 w-4" />
-                              View Data
-                            </Button>
+                            {userRole === "admin" && (
+                              <Button
+                                size="sm"
+                                variant="default"
+                                onClick={() => navigate(`/admin/${model.id}`)}
+                                className="gap-1"
+                              >
+                                <Shield className="h-4 w-4" />
+                                Grant Access
+                              </Button>
+                            )}
                             {canEdit && (
                               <Button
                                 size="sm"

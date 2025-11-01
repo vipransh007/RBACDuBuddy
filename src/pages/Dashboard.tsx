@@ -60,10 +60,12 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-card">
+      <header className="border-b border-border bg-card/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Database className="h-8 w-8 text-primary" />
+            <div className="p-2 bg-primary/10 rounded-lg">
+              <Database className="h-6 w-6 text-primary" />
+            </div>
             <h1 className="text-2xl font-bold">Dashboard</h1>
           </div>
           <div className="flex items-center gap-2">
@@ -90,10 +92,10 @@ const Dashboard = () => {
           </p>
 
           <div className="grid sm:grid-cols-2 gap-6">
-            <Card className="border-border bg-card cursor-pointer" onClick={() => navigate("/models")}> 
+            <Card className="border-border bg-card cursor-pointer smooth-transition hover:border-primary/50 hover:shadow-lg" onClick={() => navigate("/models")}> 
               <CardHeader>
-                <div className="p-3 bg-muted rounded-md w-fit mb-2">
-                  <Database className="h-6 w-6 text-muted-foreground" />
+                <div className="p-3 bg-primary/10 rounded-md w-fit mb-2 smooth-transition group-hover:glow-effect">
+                  <Database className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>View Models</CardTitle>
                 <CardDescription>Browse and manage your models</CardDescription>
@@ -101,10 +103,10 @@ const Dashboard = () => {
             </Card>
 
             {canCreate && (
-              <Card className="border-border bg-card cursor-pointer" onClick={() => navigate("/models/new")}>
+              <Card className="border-border bg-card cursor-pointer smooth-transition hover:border-primary/50 hover:shadow-lg" onClick={() => navigate("/models/new")}>
                 <CardHeader>
-                  <div className="p-3 bg-muted rounded-md w-fit mb-2">
-                    <Plus className="h-6 w-6 text-muted-foreground" />
+                  <div className="p-3 bg-primary/10 rounded-md w-fit mb-2 smooth-transition">
+                    <Plus className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle>Create Model</CardTitle>
                   <CardDescription>Define a new data model</CardDescription>
@@ -113,10 +115,10 @@ const Dashboard = () => {
             )}
 
             {isAdmin && (
-              <Card className="border-border bg-card cursor-pointer" onClick={() => navigate("/settings")}>
+              <Card className="border-border bg-card cursor-pointer smooth-transition hover:border-primary/50 hover:shadow-lg" onClick={() => navigate("/settings")}>
                 <CardHeader>
-                  <div className="p-3 bg-muted rounded-md w-fit mb-2">
-                    <Shield className="h-6 w-6 text-muted-foreground" />
+                  <div className="p-3 bg-primary/10 rounded-md w-fit mb-2 smooth-transition">
+                    <Shield className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle>RBAC Settings</CardTitle>
                   <CardDescription>Manage roles and permissions</CardDescription>
