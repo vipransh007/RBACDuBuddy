@@ -134,9 +134,9 @@ const Settings = () => {
   if (currentUserRole !== "admin") {
     return (
       <div className="min-h-screen bg-background">
-        <header className="border-b border-border bg-card">
+        <header className="border-b border-border bg-card/50 backdrop-blur-sm">
           <div className="container mx-auto px-4 py-4">
-            <Button variant="ghost" onClick={() => navigate("/dashboard")} className="gap-2">
+            <Button variant="ghost" onClick={() => navigate("/dashboard")} className="gap-2 smooth-transition hover:bg-primary/10">
               <ArrowLeft className="h-4 w-4" />
               Back to Dashboard
             </Button>
@@ -145,7 +145,9 @@ const Settings = () => {
 
         <main className="container mx-auto px-4 py-8">
           <div className="max-w-4xl mx-auto text-center py-12">
-            <Shield className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+            <div className="p-4 bg-primary/10 rounded-full w-fit mx-auto mb-4">
+              <Shield className="h-16 w-16 text-primary" />
+            </div>
             <h2 className="text-2xl font-bold mb-2">Access Denied</h2>
             <p className="text-muted-foreground">
               Only administrators can access this page.
@@ -158,9 +160,9 @@ const Settings = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-card">
+      <header className="border-b border-border bg-card/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
-          <Button variant="ghost" onClick={() => navigate("/dashboard")} className="gap-2">
+          <Button variant="ghost" onClick={() => navigate("/dashboard")} className="gap-2 smooth-transition hover:bg-primary/10">
             <ArrowLeft className="h-4 w-4" />
             Back to Dashboard
           </Button>
@@ -176,13 +178,15 @@ const Settings = () => {
             </p>
           </div>
 
-          <Card className="border-border bg-card">
+          <Card className="border-border bg-card smooth-transition">
             <CardHeader>
               <div className="flex items-center gap-3">
-                <Users className="h-5 w-5 text-primary" />
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Users className="h-5 w-5 text-primary" />
+                </div>
                 <div>
-                  <CardTitle>User Management</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="text-black">User Management</CardTitle>
+                  <CardDescription className="text-black">
                     Manage user roles and access permissions
                   </CardDescription>
                 </div>
@@ -190,7 +194,7 @@ const Settings = () => {
             </CardHeader>
             <CardContent>
               {loading ? (
-                <div className="text-center py-8 text-muted-foreground">
+                <div className="text-center py-8 text-muted-foreground text-black">
                   Loading users...
                 </div>
               ) : users.length === 0 ? (
@@ -209,11 +213,11 @@ const Settings = () => {
                   </TableHeader>
                   <TableBody>
                     {users.map((user) => (
-                      <TableRow key={user.id}>
+                      <TableRow key={user.id} className="smooth-transition text-black hover:bg-card/50">
                         <TableCell className="font-medium">{user.email}</TableCell>
                         <TableCell>{user.full_name || "—"}</TableCell>
                         <TableCell>
-                          <Badge variant="outline" className="capitalize">
+                          <Badge variant="outline" className="capitalize smooth-transition">
                             {user.role}
                           </Badge>
                         </TableCell>

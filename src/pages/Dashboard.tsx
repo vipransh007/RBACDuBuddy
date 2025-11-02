@@ -69,7 +69,7 @@ const Dashboard = () => {
             <h1 className="text-2xl font-bold">Dashboard</h1>
           </div>
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-muted rounded-md">
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-transparent rounded-md">
               <Shield className="h-4 w-4 text-muted-foreground" />
               <span className="text-sm font-medium capitalize text-muted-foreground">{userRole}</span>
             </div>
@@ -97,7 +97,7 @@ const Dashboard = () => {
                 <div className="p-3 bg-primary/10 rounded-md w-fit mb-2 smooth-transition group-hover:glow-effect">
                   <Database className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>View Models</CardTitle>
+                <CardTitle className="text-pink-900">View Models</CardTitle>
                 <CardDescription>Browse and manage your models</CardDescription>
               </CardHeader>
             </Card>
@@ -108,7 +108,7 @@ const Dashboard = () => {
                   <div className="p-3 bg-primary/10 rounded-md w-fit mb-2 smooth-transition">
                     <Plus className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle>Create Model</CardTitle>
+                  <CardTitle className="text-pink-900">Create Model</CardTitle>
                   <CardDescription>Define a new data model</CardDescription>
                 </CardHeader>
               </Card>
@@ -120,7 +120,7 @@ const Dashboard = () => {
                   <div className="p-3 bg-primary/10 rounded-md w-fit mb-2 smooth-transition">
                     <Shield className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle>RBAC Settings</CardTitle>
+                  <CardTitle className="text-pink-900">RBAC Settings</CardTitle>
                   <CardDescription>Manage roles and permissions</CardDescription>
                 </CardHeader>
               </Card>

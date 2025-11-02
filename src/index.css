@@ -22,7 +22,7 @@
     --accent-foreground: 220 15% 8%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 20% 98%;
-    --border: 100 10% 80%;
+    --border: 100;
     --input: 220 15% 20%;
     --ring: 280 75% 60%; 
     --radius: 0.5rem;
@@ -76,7 +76,7 @@
   .gradient-text {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: white;
+    -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 }

@@ -128,9 +128,9 @@ const ModelManager = () => {
             )}
           </div>
 
-          <Card className="border-border bg-card smooth-transition">
+          <Card className="border-border text-black bg-card smooth-transition">
             <CardHeader>
-              <CardTitle>All Models</CardTitle>
+              <CardTitle >All Models</CardTitle>
               <CardDescription>
                 {models.length} {models.length === 1 ? "model" : "models"} created
               </CardDescription>

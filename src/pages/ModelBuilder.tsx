@@ -156,29 +156,29 @@ const ModelBuilder = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-card">
+    <div className="min-h-screen text-black bg-background">
+      <header className="border-b border-border bg-card/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
-          <Button variant="ghost" onClick={() => navigate("/models")} className="gap-2">
+          <Button variant="ghost" onClick={() => navigate("/models")} className="gap-2 smooth-transition hover:bg-primary/10">
             <ArrowLeft className="h-4 w-4" />
             Back to Models
           </Button>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="container text-black mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-8">
             {id ? "Edit Model" : "Create New Model"}
           </h1>
 
           <form onSubmit={handleSubmit} className="space-y-8">
-            <Card className="border-border bg-card">
+            <Card className="border-border bg-card smooth-transition">
               <CardHeader>
-                <CardTitle>Model Details</CardTitle>
+                <CardTitle className="text-black">Model Details</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="space-y-2">
+                <div className="space-y-2 text-black">
                   <Label htmlFor="name">Model Name</Label>
                   <Input
                     id="name"
@@ -188,7 +188,7 @@ const ModelBuilder = () => {
                     required
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 text-black">
                   <Label htmlFor="description">Description</Label>
                   <Textarea
                     id="description"
@@ -201,10 +201,10 @@ const ModelBuilder = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-border bg-card">
+            <Card className="border-border bg-card smooth-transition">
               <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle>Fields</CardTitle>
-                <Button type="button" onClick={addField} size="sm" className="gap-2">
+                <CardTitle className="text-black">Fields</CardTitle>
+                <Button type="button" onClick={addField} size="sm" className="gap-2 smooth-transition">
                   <Plus className="h-4 w-4" />
                   Add Field
                 </Button>
@@ -218,9 +218,9 @@ const ModelBuilder = () => {
                   fields.map((field, index) => (
                     <div
                       key={field.id}
-                      className="p-4 border border-border rounded-lg space-y-4 bg-secondary/50"
+                      className="p-4 border border-border rounded-lg space-y-4 bg-secondary/50 smooth-transition hover:bg-secondary/70"
                     >
-                      <div className="flex items-start gap-4">
+                      <div className="flex items-start gap-4 bg-transparent text-black">
                         <div className="flex-1 space-y-4">
                           <div className="grid md:grid-cols-2 gap-4">
                             <div className="space-y-2">

@@ -93,7 +93,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex items-center justify-center text-black font-bold p-4">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center space-y-2">
           <div className="flex justify-center mb-4">
@@ -107,18 +107,18 @@ const Auth = () => {
 
         <Card className="border-border bg-card">
           <CardHeader>
-            <CardTitle>Get Started</CardTitle>
+            <CardTitle className="text-pink-900">Get Started</CardTitle>
             <CardDescription>Create an account or sign in to continue</CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="signin" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
+              <TabsList className="grid w-full grid-cols-2 text-white">
                 <TabsTrigger value="signin">Sign In</TabsTrigger>
                 <TabsTrigger value="signup">Sign Up</TabsTrigger>
               </TabsList>
 
               <TabsContent value="signin">
-                <form onSubmit={handleSignIn} className="space-y-4">
+                <form onSubmit={handleSignIn} className="text-black font-bold space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <Input
@@ -130,7 +130,7 @@ const Auth = () => {
                       required
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 text-black text-black font-bold">
                     <Label htmlFor="password">Password</Label>
                     <Input
                       id="password"
@@ -141,9 +141,9 @@ const Auth = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Role</Label>
+                    <Label className="text-black font-bold">Choose Your Role:</Label>
                     <Select value={role} onValueChange={(v) => setRole(v as any)}>
-                      <SelectTrigger className="w-full">
+                      <SelectTrigger className="w-full text-black">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -160,9 +160,9 @@ const Auth = () => {
               </TabsContent>
 
               <TabsContent value="signup">
-                <form onSubmit={handleSignUp} className="space-y-4">
+                <form onSubmit={handleSignUp} className="space-y-4 text-black font-bold">
                   <div className="space-y-2">
-                    <Label htmlFor="fullname">Full Name</Label>
+                    <Label className="text-black font-bold" htmlFor="fullname">Full Name</Label>
                     <Input
                       id="fullname"
                       type="text"
@@ -172,8 +172,8 @@ const Auth = () => {
                       required
                     />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-email">Email</Label>
+                  <div className="space-y-2 text-black font-bold">
+                    <Label className="text-black font-bold" htmlFor="signup-email">Email</Label>
                     <Input
                       id="signup-email"
                       type="email"
@@ -183,8 +183,8 @@ const Auth = () => {
                       required
                     />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-password">Password</Label>
+                  <div className="space-y-2 text-black font-bold">
+                    <Label className="text-black font-bold" htmlFor="signup-password">Password</Label>
                     <Input
                       id="signup-password"
                       type="password"
@@ -194,8 +194,8 @@ const Auth = () => {
                       minLength={6}
                     />
                   </div>
-                  <div className="space-y-2">
-                    <Label>Role</Label>
+                  <div className="space-y-2 text-black font-bold">
+                    <Label className="text-black font-bold">Select Your Role</Label>
                     <Select value={role} onValueChange={(v) => setRole(v as any)}>
                       <SelectTrigger className="w-full">
                         <SelectValue />
